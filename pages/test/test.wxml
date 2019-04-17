@@ -1,0 +1,23 @@
+<!--pages/test/test.wxml-->
+<view class="div" id="id{{id}}">{{message}}</view>
+<view class="div" wx:if="{{condition}}">{{message}}</view>
+<view class="div" wx:else>{{message}}</view>
+<!-- <view wx:for="{{array}}">
+  {{index}}:{{item}}
+</view> -->
+
+<!-- <view wx:for="{{[1, 2, 3, 4, 5, 6, 7, 8, 9]}}" wx:for-item="i">
+  <view wx:for="{{[1, 2, 3, 4, 5, 6, 7, 8, 9]}}" wx:for-item="j">
+    <view wx:if="{{i <= j}}">
+      {{i}} * {{j}} = {{i * j}}
+    </view>
+  </view>
+</view> -->
+
+-------
+<view bindtap='onChangeValue'>{{str}}</view>
+
+<g-button>默认按钮</g-button>
+<g-button size="large">大的按钮</g-button>
+<g-button bgcolor='gradient'>空心按钮</g-button>
+
