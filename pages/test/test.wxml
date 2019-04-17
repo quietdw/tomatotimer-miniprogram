@@ -18,6 +18,6 @@
 <view bindtap='onChangeValue'>{{str}}</view>
 
 <g-button>默认按钮</g-button>
-<g-button size="large">大的按钮</g-button>
-<g-button bgcolor='gradient'>空心按钮</g-button>
+<g-button size="large">大的有色按钮</g-button>
+<g-button bgcolor='transparent'>空心按钮</g-button>
 

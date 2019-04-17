@@ -1,3 +1,4 @@
-<button>
-<slot></slot>
-</button>
+
+  <button class="g-button {{size === 'large' ? 'large':''}} {{bgcolor === 'transparent' ? 'transparent':''}}" hover-class="button-hover" >
+  <slot></slot>
+  </button>
