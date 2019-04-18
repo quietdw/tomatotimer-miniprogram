@@ -1,0 +1,74 @@
+/* pages/home/home.wxss */
+
+.home-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-list {
+  height: 60%;
+  
+}
+
+.todo-list .list-inner {
+  padding-bottom: 20rpx;
+  margin: 0 30rpx;
+  position: relative;
+}
+.list-inner .line{
+  position: absolute;
+  width: 2rpx;
+  background: #f6705a;
+  top:-30rpx;
+  left: 57rpx;
+  height: calc(100% + 30rpx);
+    min-height: 1000rpx;
+  z-index: 0;
+}
+.item {
+  margin: 24rpx 0;
+  display: flex;
+  background: #fff;
+  box-shadow: 0px 2px 6px 1px rgba(0, 0, 0, 0.10);
+  border-radius: 16rpx;
+  padding: 13px;
+  position: relative;
+  z-index: 1;
+}
+
+.complete {
+  width: 24rpx;
+  height: 24rpx;
+  background: #fff;
+  border: solid 2rpx #f6705a;
+  border-radius: 50%;
+  align-self: center;
+  margin-left: 15rpx;
+  margin-right: 30rpx;
+}
+
+.content {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.clock-wapper {
+  z-index: 2;
+  height: 40%;
+  position: relative;
+  margin: 20rpx;
+  padding: 62rpx 0;
+  background: #eef7f6;
+  box-shadow: 0px -2px 8px 0px rgba(0, 0, 0, 0.10);
+  border-radius: 16rpx;
+}
+
+.clock-wapper .button-wapper {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
