@@ -12,8 +12,17 @@ Page({
     id:1,
     condition:true,
     array:[1,2,3,5,8,13],
-    str:'String'
+    str:'String',
+    visible:true
   },
+    onConfirm(event){
+      console.log(event.detail)
+      this.setData({ visible: false })
+    },
+    onCancle(){
+      this.setData({ visible : false})
+    }
+  ,
 
   /**
    * 生命周期函数--监听页面加载
