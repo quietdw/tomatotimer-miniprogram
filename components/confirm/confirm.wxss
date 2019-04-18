@@ -2,6 +2,7 @@
 
 .container{
   position: absolute;
+  z-index: 30;
   left: 0;
   top: 0;
   width: 100%;
@@ -21,9 +22,12 @@
 
 .confirm textarea {
   border-radius: 16rpx;
+  height: 40rpx;
+  line-height: 40rpx;
   background: #F2F2F2 ;
-  padding: 23rpx 34rpx;
+  padding: 20rpx 30rpx;
   color: #737373;
+  font-size: 28rpx;
 }
 
 .actions{
@@ -39,6 +43,7 @@
   text-align: center;
   padding-top: 10rpx;
   padding-bottom: 10rpx;
+  font-size: 28rpx;
 }
 .actions .line{
   width: 5rpx;
