@@ -1,0 +1,25 @@
+/* components/clock/clock.wxss */
+.active{
+  opacity: 0.9
+}
+
+.g-clock{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.g-clock image {
+  width: 269rpx;
+  height: 269rpx;
+}
+
+.g-clock text {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-100%);
+font-size: 26rpx;
+color: #fff;
+}
+
