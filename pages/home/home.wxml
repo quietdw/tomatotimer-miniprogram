@@ -2,8 +2,9 @@
   <scroll-view class="todo-list" scroll-y="true">
     <view class="list-inner">
       <view class="line"></view>
-      <view class='item' wx:for="{{fakeData}}" wx:key="{{index}}">
-        <view class="complete"></view>
+      <view class='item' wx:for="{{lists}}" wx:key="{{index}}" wx:for-index="index" >
+        <view class="list-icon {{item.completed && 'complete'}}" bindtap='completed'  data-index = "{{index}}">
+        </view>
         <view class="content">{{item.message}}</view>
       </view>
     </view>
@@ -14,6 +15,5 @@
     </view>
     <g-clock>开始番茄法计时</g-clock>
   </view>
-  <g-confirm visible="{{confirmState}}"  placeholder="先定下一个小目标，比如说我们先……" 
-bindconfirm="onConfirm" bindcancle = "onCancle"></g-confirm>
+  <g-confirm visible="{{confirmState}}" placeholder="先定下一个小目标，比如说我们先……" bindconfirm="onConfirm" bindcancle="onCancle"></g-confirm>
 </view>

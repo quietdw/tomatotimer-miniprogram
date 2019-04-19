@@ -22,7 +22,7 @@
   width: 2rpx;
   background: #f6705a;
   top:-30rpx;
-  left: 57rpx;
+  left: 54rpx;
   height: calc(100% + 30rpx);
     min-height: 1000rpx;
   z-index: 0;
@@ -38,7 +38,7 @@
   z-index: 1;
 }
 
-.complete {
+.list-icon {
   width: 24rpx;
   height: 24rpx;
   background: #fff;
@@ -47,6 +47,20 @@
   align-self: center;
   margin-left: 15rpx;
   margin-right: 30rpx;
+  position: relative;
+}
+
+.complete::after{
+  content: '';
+  position:absolute;
+  width: 18rpx;
+  height: 18rpx;
+  background: #f6705a;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%)
+
 }
 
 .content {

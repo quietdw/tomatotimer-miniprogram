@@ -6,17 +6,16 @@ Page({
    */
   data: {
     confirmState:false,
-    fakeData:[
-      {id:1,message:'先挣他两个亿'},
-      { id: 2, message: '先挣他两个亿先挣他两个亿先挣他两个亿先挣他两个亿先挣他两个亿' },
-      { id: 3, message: '先挣他两个亿' },
-      { id: 4, message: '先挣他两个亿' },
-      { id: 5, message: '先挣他两个亿' },
-      { id: 6, message: '先挣他两个亿' },
-      { id: 7, message: '先挣他两个亿' },
-      { id: 8, message: '先挣他两个亿' },
-      { id: 9, message: '先挣他两个亿' }
-
+    lists:[
+      {id:1,message:'先挣他两个亿1'},
+      { id: 2, message: '先挣他两个亿先挣他两个亿先挣他两个亿先挣他两个亿先挣他两个亿2', completed: false},
+      { id: 3, message: '先挣他两个亿3', completed: false},
+      { id: 4, message: '先挣他两个亿4', completed: false},
+      { id: 5, message: '先挣他两个亿5', completed: false},
+      { id: 6, message: '先挣他两个亿6', completed: false},
+      { id: 7, message: '先挣他两个亿7', completed: false},
+      { id: 8, message: '先挣他两个亿8', completed: false},
+      { id: 9, message: '先挣他两个亿9', completed: false}
     ]
   },
   onCreate(e) {
@@ -25,14 +24,20 @@ Page({
   ,
   onConfirm(event) {
     let newData = {}
-    newData.id = this.data.fakeData.length+1
+    newData.id = this.data.lists.length+1
     newData.message = event.detail
-    this.data.fakeData.unshift(newData)
-    this.setData({ fakeData: this.data.fakeData })
+    this.data.lists.unshift(newData)
+    this.setData({ lists: this.data.lists })
     this.setData({ confirmState: false })
   },
   onCancle() {
     this.setData({ confirmState: false })
+  },
+  completed(event){
+    let index = event.currentTarget.dataset.index
+    this.data.lists[index].completed= true
+    this.data.lists.splice(index,1)
+     this.setData({ lists: this.data.lists })
   },
   methods:{
     
