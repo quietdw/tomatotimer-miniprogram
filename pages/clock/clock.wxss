@@ -1,0 +1,17 @@
+.limit{
+
+}
+.clock{
+position: relative;
+}
+.clock .limit-time {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-70%);
+  font-size: 50rpx;
+  color: #fff;
+}
+.button-wapper{
+  margin-top: 40rpx
+}

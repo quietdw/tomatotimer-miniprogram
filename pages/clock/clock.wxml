@@ -1,0 +1,13 @@
+<view>
+<text class="limit">距离结束还有</text>
+<view class="clock">
+<g-clock></g-clock> 
+<text class="limit-time">{{total}}</text>
+</view>
+<view class="button-wapper">
+<g-button bindclick = "StartTomato">暂停</g-button>
+</view>
+<view class="button-wapper">
+<g-button bgcolor="transparent">放弃</g-button>
+</view>
+</view>
