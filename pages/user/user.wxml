@@ -1,2 +1,25 @@
-<!--pages/user/user.wxml-->
-<text>pages/user/user.wxml</text>
+<!--wxml-->
+<!-- 如果只是展示用户头像昵称，可以使用 <open-data /> 组件 -->
+<view class="userInfo">
+<open-data type="userAvatarUrl" class="avatar"></open-data>
+<view class="username-wapper"><open-data type="userNickName" class="username"></open-data></view>
+<button open-type="contact" bindcontact="handleContact" class="questions" plain="true">问题反馈</button>
+</view>
+
+<view class="items-title">
+<view>历史</view>
+<view>我完成的任务</view>
+<view class="bar"></view>
+</view>
+
+<view class="items">
+  <view class="item">
+    <view>本周四</view>
+    <view class="lists">
+      <view class="list">
+      <text>14:00</text>
+      <text>完成了XXXXXXXXXXXX</text>
+      </view>
+    </view>
+  </view>
+</view>
