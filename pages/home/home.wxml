@@ -13,7 +13,9 @@
     <view class="button-wapper">
       <g-button bindtap='onCreate'>新建待办事宜</g-button>
     </view>
+   <navigator url="/pages/clock/clock">
     <g-clock>开始番茄法计时</g-clock>
+   </navigator>
   </view>
   <g-confirm visible="{{confirmState}}" placeholder="先定下一个小目标，比如说我们先……" bindconfirm="onConfirm" bindcancle="onCancle"></g-confirm>
 </view>
