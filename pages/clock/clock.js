@@ -14,7 +14,7 @@ Page({
   },
   timer: null,
   onGiveUp(){
-    if (!this.data.isTomato){
+    if (this.data.initTime ===1500){
       return
     }
     this.data.visible  = true;
