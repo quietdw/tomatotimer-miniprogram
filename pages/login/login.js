@@ -19,27 +19,34 @@ Page({
   bindGetUserInfo(e) {
     let iv = e.detail.iv
     let encrypted_data = e.detail.encryptedData
-    let code
 
+    this.wxLogin(iv, encrypted_data)
+    
+  },
+  wxLogin(iv, encrypted_data){
     wx.login({
-      success(res){
-        code = res.code
-        request.http.post('/sign_in/mini_program_user', {
-          code,
-          iv,
-          encrypted_data,
-          app_id,
-          app_secret
-        }).then(res => {
-          wx.setStorageSync('me', res.data.resource)
-          wx.setStorageSync('X-token', res.header['X-token'])
-          console.log(1)
-          wx.switchTab({
-            url: '/pages/home/home'
-          })
-        }) 
+      success:(res)=> {
+        console.log(res)
+        this.meLogin(iv, encrypted_data, res.code)
       }
     })
-    
+  },
+  meLogin(iv, encrypted_data, code){
+    request.http.post('/sign_in/mini_program_user', {
+      code,
+      iv,
+      encrypted_data,
+      app_id,
+      app_secret
+    }).then(res => {
+     this.saveData(res)
+      wx.switchTab({
+        url: '/pages/home/home'
+      })
+    })
+  },
+  saveData(res){
+    wx.setStorageSync('me', res.data.resource)
+    wx.setStorageSync('X-token', res.header['X-token'])
   }
 })
