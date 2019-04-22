@@ -1,0 +1,52 @@
+/**index.wxss**/
+page{
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 238rpx;
+  height: 238rpx;
+  margin: 16rpx;
+  border-radius: 50%;
+  box-shadow: 0px 11px 32px 0px rgba(246, 112, 90, 0.30);
+  border: solid 5rpx #f6705a;
+}
+
+.userinfo-nickname {
+  color: #f6705a;
+  padding: 18rpx 33rpx;
+  border-bottom: solid #f6705a 5rpx;
+  font-size: 28rpx;
+}
+
+.usermotto {
+  margin-top: 58rpx;
+}
+
+.button-hover {
+  opacity: 0.9;
+}
+
+.usermotto button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16rpx;
+  box-shadow: 0px 11px 32px 0px rgba(246, 112, 90, 0.30);
+  font-size: 26rpx;
+  color: #fff;
+  width: 360rpx;
+  height: 80rpx;
+  background: linear-gradient(to right, rgba(254, 154, 111, 1) 0%, rgba(246, 111, 90, 1) 100%);
+}
+
+.usermotto button::after {
+  border: none;
+}
