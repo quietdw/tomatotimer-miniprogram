@@ -5,7 +5,7 @@
       <view class='item' wx:for="{{lists}}" wx:key="{{index}}" wx:for-index="index" >
         <view class="list-icon {{item.completed && 'complete'}}" bindtap='completed'  data-index = "{{index}}">
         </view>
-        <view class="content">{{item.message}}</view>
+        <view class="content">{{item.description}}</view>
       </view>
     </view>
   </scroll-view>

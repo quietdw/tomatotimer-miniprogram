@@ -7,15 +7,15 @@ Page({
   data: {
     confirmState:false,
     lists:[
-      {id:1,message:'先挣他两个亿1'},
-      { id: 2, message: '先挣他两个亿先挣他两个亿先挣他两个亿先挣他两个亿先挣他两个亿2', completed: false},
-      { id: 3, message: '先挣他两个亿3', completed: false},
-      { id: 4, message: '先挣他两个亿4', completed: false},
-      { id: 5, message: '先挣他两个亿5', completed: false},
-      { id: 6, message: '先挣他两个亿6', completed: false},
-      { id: 7, message: '先挣他两个亿7', completed: false},
-      { id: 8, message: '先挣他两个亿8', completed: false},
-      { id: 9, message: '先挣他两个亿9', completed: false}
+      { id: 1, description:'先挣他两个亿1'},
+      { id: 2, description: '先挣他两个亿先挣他两个亿先挣他两个亿先挣他两个亿先挣他两个亿2', completed: false},
+      { id: 3, description: '先挣他两个亿3', completed: false},
+      { id: 4, description: '先挣他两个亿4', completed: false},
+      { id: 5, description: '先挣他两个亿5', completed: false},
+      { id: 6, description: '先挣他两个亿6', completed: false},
+      { id: 7, description: '先挣他两个亿7', completed: false},
+      { id: 8, description: '先挣他两个亿8', completed: false},
+      { id: 9, description: '先挣他两个亿9', completed: false}
     ]
   },
   onCreate(e) {
@@ -25,7 +25,7 @@ Page({
   onConfirm(event) {
     let newData = {}
     newData.id = this.data.lists.length+1
-    newData.message = event.detail
+    newData.description = event.detail
     this.data.lists.unshift(newData)
     this.setData({ lists: this.data.lists })
     this.setData({ confirmState: false })
