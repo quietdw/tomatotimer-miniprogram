@@ -1,7 +1,9 @@
 <!--wxml-->
 <!-- 如果只是展示用户头像昵称，可以使用 <open-data /> 组件 -->
 <view class="userInfo">
-<open-data type="userAvatarUrl" class="avatar"></open-data>
+<view class="avatar">
+<open-data type="userAvatarUrl" ></open-data>
+</view>
 <view class="username-wapper"><open-data type="userNickName" class="username"></open-data></view>
 <button open-type="contact" bindcontact="handleContact" class="questions" plain="true">问题反馈</button>
 </view>
