@@ -5,9 +5,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    toRight:false
   },
-
+  onClick(event){
+    if (event.currentTarget.offsetLeft>200){
+      this.data.toRight = true
+    }else{
+      this.data.toRight = false
+    }
+    this.setData({ toRight: this.data.toRight})
+  }
+,
   /**
    * 生命周期函数--监听页面加载
    */
