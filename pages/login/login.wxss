@@ -17,6 +17,7 @@ page{
   border-radius: 50%;
   box-shadow: 0px 11px 32px 0px rgba(246, 112, 90, 0.30);
   border: solid 5rpx #f6705a;
+  overflow: hidden;
 }
 
 .userinfo-nickname {
