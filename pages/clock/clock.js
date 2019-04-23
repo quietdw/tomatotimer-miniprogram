@@ -1,19 +1,22 @@
-// pages/clock/clock.js
+import request from "../../utils/request.js"
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    initTime: 1500,
+    initTime: 10,
     total: "25:00",
     isTomato: false,
     visible:false,
     isFinished:false,
-    placeholder:''
+    placeholder:'',
+    tomatoId:'',
+    aborted:true
   },
   timer: null,
-  onGiveUp(){
+  onGiveUp(event){
     if (this.data.initTime ===1500){
       return
     }
@@ -24,8 +27,17 @@ Page({
   }
   ,
   onConfirm(event){
+    console.log(event)
     console.log('clock 拿到数据了:'+event.detail)
-    this.setData({ visible: false })
+    request.http.edit(`/tomatoes/${this.data.tomatoId}`,{
+      description: event.detail, aborted: this.data.aborted 
+    }).then(()=>{
+      this.data.tomatoId = ''
+      wx.navigateBack({
+        to:-1
+      })
+    })
+    
   }
   ,
   onCancle(){
@@ -35,6 +47,10 @@ Page({
   ,
   startTomato() {
     this.data.isTomato = true
+    request.http.post('/tomatoes').then(res=>{
+      console.log(res.data.resource.id)
+      this.data.tomatoId = res.data.resource.id
+    })
     this.setData({
       isTomato: this.data.isTomato
     })
@@ -71,26 +87,38 @@ Page({
           this.data.isFinished = true
           this.data.visible = true
           this.data.placeholder = "完成了什么啊？"
+          this.data.aborted = true
           this.setData({ isFinished: this.data.isFinished, visible: this.data.visible, placeholder: this.data.placeholder })
         }
     }, 1000)
   },
   onShow: function() {
-
+   
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function() {
-
+    this.clearTimer()
+    if (this.data.tomatoId){
+    request.http.edit(`/tomatoes/${this.data.tomatoId}`, {
+      description: '退出了番茄页面', aborted: this.data.aborted
+    })
+      
+    }
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-
+    this.clearTimer()
+    if (this.data.tomatoId){
+     request.http.edit(`/tomatoes/${this.data.tomatoId}`, {
+       description: '退出了番茄页面', aborted: this.data.aborted
+     })
+   }
   },
 
   /**
