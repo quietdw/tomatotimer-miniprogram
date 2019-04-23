@@ -7,8 +7,21 @@ Page({
    */
   data: {
     confirmState: false,
+    confirmEdit: false,
+    todu:{
+      id:'',
+      description:''
+    },
     lists: []
   },
+  getTodu(){
+    request.http.get('/todos').then(res => {
+      this.setData({
+        lists: res.data.resources
+      })
+    })
+  }
+  ,
   onCreate(e) {
     this.setData({
       confirmState: true
@@ -37,6 +50,7 @@ Page({
       this.setData({
         confirmState: false
       })
+
     })
   },
   onCancle() {
@@ -44,21 +58,51 @@ Page({
       confirmState: false
     })
   },
-  completed(event) {
+  onCompleted(event) {
     let key = event.currentTarget.dataset.key
     let index = event.currentTarget.dataset.index
     request.http.delete(`/todos/${key}`,{
       completed:true
     }).then((res)=>{
-      console.log(res)
        this.data.lists[index] = res.data.resource
       this.setData({
        lists: this.data.lists
      })
     })
-    
-   
   },
+  onEdit(event){
+    this.data.todu.description = event.currentTarget.dataset.description
+    this.data.todu.id = event.currentTarget.dataset.id
+    this.setData({
+      confirmEdit: true,
+      todu: this.data.todu
+    })
+  },
+  onConfirmEdit(event) {
+    let newDescription = event.detail
+
+    if (newDescription){
+      request.http.edit(`/todos/${this.data.todu.id}`, {
+        description: newDescription
+      }).then(res=>{
+        console.log(res)
+        this.getTodu()
+        this.setData({
+          confirmEdit: false
+        })
+      })
+    }else{
+      wx.showToast({
+        title: '阁下还未修改！',
+        icon: 'none'
+      })
+    }
+   }, 
+  onCancleEdit(){
+    this.setData({
+      confirmEdit: false
+    })
+  }, 
   methods: {
 
   }
@@ -82,11 +126,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    request.http.get('/todos').then(res => {
-      this.setData({
-        lists: res.data.resources
-      })
-    })
+    this.getTodu()
   },
 
   /**

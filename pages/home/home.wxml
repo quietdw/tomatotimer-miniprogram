@@ -3,9 +3,9 @@
     <view class="list-inner">
       <view class="line"></view>
       <view class='item' wx:for="{{lists}}" wx:key="{{item.id}}" wx:for-index="index" wx:if="{{!item.completed}}">
-        <view class="list-icon {{item.completed && 'complete'}}" bindtap='completed' data-key="{{item.id}}"  data-index = "{{index}}">
+        <view class="list-icon {{item.completed && 'complete'}}" bindtap='onCompleted' data-key="{{item.id}}"  data-index = "{{index}}">
         </view>
-        <view class="content">{{item.description}}</view>
+        <view class="content" bindtap='onEdit' data-description = "{{item.description}}" data-id="{{item.id}}">{{item.description}}</view>
       </view>
     </view>
   </scroll-view>
@@ -14,8 +14,9 @@
       <g-button bindtap='onCreate'>新建待办事宜</g-button>
     </view>
    <navigator url="/pages/clock/clock">
-    <g-clock>开始番茄法计时</g-clock>
+    <g-clock>开始番茄</g-clock>
    </navigator>
   </view>
   <g-confirm visible="{{confirmState}}" placeholder="先定下一个小目标，比如说我们先……" bindconfirm="onConfirm" bindcancle="onCancle"></g-confirm>
+  <g-confirm visible="{{confirmEdit}}"  bindconfirm="onConfirmEdit" bindcancle="onCancleEdit" _value="{{todu.description}}"></g-confirm>
 </view>
