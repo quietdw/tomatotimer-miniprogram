@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    initTime: 10,
+    initTime: 1500,
     total: "25:00",
     isTomato: false,
     visible:false,
@@ -27,8 +27,6 @@ Page({
   }
   ,
   onConfirm(event){
-    console.log(event)
-    console.log('clock 拿到数据了:'+event.detail)
     request.http.edit(`/tomatoes/${this.data.tomatoId}`,{
       description: event.detail, aborted: this.data.aborted 
     }).then(()=>{
@@ -48,7 +46,6 @@ Page({
   startTomato() {
     this.data.isTomato = true
     request.http.post('/tomatoes').then(res=>{
-      console.log(res.data.resource.id)
       this.data.tomatoId = res.data.resource.id
     })
     this.setData({
@@ -87,7 +84,7 @@ Page({
           this.data.isFinished = true
           this.data.visible = true
           this.data.placeholder = "完成了什么啊？"
-          this.data.aborted = true
+          this.data.aborted = false
           this.setData({ isFinished: this.data.isFinished, visible: this.data.visible, placeholder: this.data.placeholder })
         }
     }, 1000)
