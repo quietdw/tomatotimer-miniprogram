@@ -21,9 +21,9 @@
   position: absolute;
   width: 2rpx;
   background: #f6705a;
-  top:-30rpx;
+  top:0rpx;
   left: 54rpx;
-  height: calc(100% + 30rpx);
+  height: 100% ;
   z-index: 0;
 }
 .item {
