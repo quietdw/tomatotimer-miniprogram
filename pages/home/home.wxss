@@ -24,7 +24,6 @@
   top:-30rpx;
   left: 54rpx;
   height: calc(100% + 30rpx);
-    min-height: 1000rpx;
   z-index: 0;
 }
 .item {
