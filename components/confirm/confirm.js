@@ -7,6 +7,10 @@ Component({
     placeholder: {
       type: String,
       value: ''
+    },
+    _value:{
+      type:String,
+      value:''
     }
   },
   data:{
@@ -23,7 +27,6 @@ Component({
     },
     onInput(e){
       this.data.message = e.detail.value
-      
     }
   }
 })
