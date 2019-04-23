@@ -16,13 +16,19 @@ Page({
   },
   onConfirm(event) {
     let description = event.detail
-
+  if(!description){
+    wx.showToast({
+      title: '写点东西吧',
+      icon:'none'
+    })
+    return
+  }
     request.http.post('/todos', {
       completed: false,
       description
     }).then(res => {
       let newData = {}
-      newData.id = this.data.lists.length + 1
+      newData.id = res.data.resource.id
       newData.description = res.data.resource.description
       this.data.lists.unshift(newData)
       this.setData({
@@ -39,12 +45,19 @@ Page({
     })
   },
   completed(event) {
+    let key = event.currentTarget.dataset.key
     let index = event.currentTarget.dataset.index
-    this.data.lists[index].completed = true
-    this.data.lists.splice(index, 1)
-    this.setData({
-      lists: this.data.lists
+    request.http.delete(`/todos/${key}`,{
+      completed:true
+    }).then((res)=>{
+      console.log(res)
+       this.data.lists[index] = res.data.resource
+      this.setData({
+       lists: this.data.lists
+     })
     })
+    
+   
   },
   methods: {
 
