@@ -38,7 +38,8 @@ function _http(method,url,data){
 const http={
   get: (url, params) => _http('GET', url, params),
   post: (url, data) => _http('POST', url, data),
-  delete: (url, data) => _http('PUT', url, data)
+  delete: (url, data) => _http('PUT', url, data),
+  edit: (url, data) => _http('PUT', url, data)
 }
 
 export default{
