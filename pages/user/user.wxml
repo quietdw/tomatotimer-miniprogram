@@ -13,24 +13,25 @@
 <view bindtap='onClick'>完成任务</view>
 <view class="bar {{ toRight ? 'toRight':''}}"></view>
 </view>
-
+<wxs src="../../utils/formatDate.wxs" module="tools" />
 <scroll-view class="items" scroll-y="true" wx:if="{{!toRight}}">
-<view class="item">
-  <text class="date">本周四</text>
-  <view class="lists">
+<view class="item" wx:for="{{tomatoLists}}" wx:key="{{index}}" wx:for-item="value" wx:for-index="key">
+  <text class="date">{{tools.friendlyMonth(key)}}</text>
+  <view class="lists" wx:for="{{value}}" wx:for-item="list"  wx:key="{{list.id}}">
     <view class="list">
-    <text class="time">14:00</text>
-    <text class='content'>完成了XXXXXXXXXXXX完成了XXXXXXXXXXXX完成了XXXXXXXXXXXX完成了XXXXXXXXXXXX完成了XXXXXXXXXXXX完成了XXXXXXXXXXXX</text>
+    <text class="time">{{tools.friendlyHour(list.created_at)}}</text>
+    <text class='content'>{{list.description}}</text>
     </view>
   </view>
 </view>
 </scroll-view>
+
 <scroll-view class="items" scroll-y="true" wx:else>
 <view class="item" wx:for="{{todoLists}}" wx:key="{{index}}" wx:for-item="value" wx:for-index="key">
-  <text class="date">{{key}}</text>
-  <view class="lists"  wx:for="{{value}}" wx:for-item="list" >
+  <text class="date">{{tools.friendlyMonth(key)}}</text>
+  <view class="lists"  wx:for="{{value}}" wx:for-item="list"  wx:key="{{list.id}}">
     <view class="list">
-    <text class="time">{{list.created_at}}</text>
+    <text class="time">{{tools.friendlyHour(list.created_at)}}</text>
     <text class='content'>{{list.description}}</text>
     </view>
   </view>
