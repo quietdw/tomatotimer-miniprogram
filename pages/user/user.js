@@ -18,13 +18,14 @@ Page({
         this.setData({
           todoLists: this.data.todoLists
         })
-        console.log(this.data.todoLists)
       })
     }else{
       this.data.toRight = false
       this.getTomato().then(res => {
-        
-        console.log(res)
+        this.data.tomatoLists = res.data.resources
+        this.setData({
+          tomatoLists: this.data.tomatoLists
+        })
       })
     }
     this.setData({ toRight: this.data.toRight})
@@ -58,7 +59,12 @@ getTodos(){
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getTomato()
+    this.getTomato().then(res => {
+        this.data.tomatoLists = res.data.resources
+        this.setData({
+          tomatoLists: this.data.tomatoLists
+        })
+      })
   },
 
   /**
