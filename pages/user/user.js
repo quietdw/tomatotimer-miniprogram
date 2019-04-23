@@ -1,21 +1,45 @@
-// pages/user/user.js
+import request from "../../utils/request.js"
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    toRight:false
+    toRight:false,
+    tomatoLists:{},
+    todoLists:{}
   },
   onClick(event){
     if (event.currentTarget.offsetLeft>200){
-      this.data.toRight = true
+      this.data.toRight = true;
+      this.getTodos().then(res=>{
+        this.data.todoLists = res.data.resources
+        this.setData({
+          todoLists: this.data.todoLists
+        })
+        console.log(this.data.todoLists)
+      })
     }else{
       this.data.toRight = false
+      this.getTomato().then(res => {
+        
+        console.log(res)
+      })
     }
     this.setData({ toRight: this.data.toRight})
   }
 ,
+getTomato(){
+  return request.http.get('/tomatoes',{
+     is_group: "yes" 
+  })
+},
+getTodos(){
+  return request.http.get('/todos', {
+    is_group: "yes"
+  })
+},
   /**
    * 生命周期函数--监听页面加载
    */
@@ -34,7 +58,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getTomato()
   },
 
   /**
