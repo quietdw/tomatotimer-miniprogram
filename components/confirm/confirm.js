@@ -16,6 +16,7 @@ Component({
   methods:{
     onConfirm(){
       this.triggerEvent('confirm', this.data.message)
+      this.data.message = ''
     },
     onCancle(){
       this.triggerEvent('cancle')
