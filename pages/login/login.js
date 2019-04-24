@@ -18,7 +18,7 @@ Page({
     let iv = e.detail.iv
     let encrypted_data = e.detail.encryptedData
     this.wxLogin(iv, encrypted_data)
-  }, 
+  },
   wxLogin(iv, encrypted_data) {
     wx.login({
       success: (res) => {
