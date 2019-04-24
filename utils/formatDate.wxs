@@ -9,8 +9,10 @@ function friendlyMonth(timedata) {
 
 function friendlyHour(timedata){
   var time = getDate(timedata)
-  var hour = time.getHours()
-  var minute = time.getMinutes()
+  var hour = time.getHours().toString()
+  var minute = time.getMinutes().toString()
+  hour = hour.length === 1 ? '0' + hour : hour
+  minute = minute.length === 1 ? '0' + minute : minute
   return hour + ":" + minute
 }
 
