@@ -2,6 +2,8 @@ page{
   height: 100vh;
 }
 
+
+
 .userInfo{display: flex; align-items: center;background: #fff;padding: 25rpx 0;box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.10);}
 .avatar{
   width: 120rpx;
@@ -95,11 +97,34 @@ page{
 .list{
   display: flex;
   font-size: 28rpx;
+  position: relative;
+}
+.list .delete{
+  content: '';
+  position: absolute;
+  width: 30rpx;
+  height:30rpx;
+  border-radius: 50%;
+  background: #F6705A;
+  right: 30rpx;
+  top: 50%;
+  transform: translateY(-50%)
+}
+.list .delete::after{
+  content: '';
+  position: absolute;
+  width: calc(100% - 10rpx);
+  background: #fff;
+  height: 8rpx;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%)
 }
 .time{
   display: flex;
   width: 85rpx;
   margin-right: 25rpx;
+  font-family: AndaleMono;
 }
 
 button[plain]{

@@ -14,6 +14,7 @@ Page({
     if (event.currentTarget.offsetLeft>200){
       this.data.toRight = true;
       this.getTodos().then(res=>{
+        console.log(res)
         this.data.todoLists = res.data.resources
         this.setData({
           todoLists: this.data.todoLists
@@ -22,6 +23,7 @@ Page({
     }else{
       this.data.toRight = false
       this.getTomato().then(res => {
+        console.log(res)
         this.data.tomatoLists = res.data.resources
         this.setData({
           tomatoLists: this.data.tomatoLists
@@ -41,6 +43,21 @@ getTodos(){
     is_group: "yes"
   })
 },
+  onDelete(event){
+    request.http.edit(`/todos/${event.currentTarget.dataset.id}`,{
+      deleted:true
+    }).then(res=>{
+      console.log(event)
+      this.getTodos().then(res => {
+        console.log(res)
+        this.data.todoLists = res.data.resources
+        this.setData({
+          todoLists: this.data.todoLists
+        })
+      })
+    })
+  }
+,
   /**
    * 生命周期函数--监听页面加载
    */
